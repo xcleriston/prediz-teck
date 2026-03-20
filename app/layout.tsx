@@ -18,7 +18,7 @@ const fredoka = Fredoka({
 });
 
 export const metadata: Metadata = {
-  title: "SatoshiMKT Clone",
+  title: "Prediz.teck",
   description: "Prediction market platform clone",
 };
 

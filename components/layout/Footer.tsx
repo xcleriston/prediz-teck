@@ -12,7 +12,7 @@ export function Footer() {
         
         <div className="lg:col-span-1">
           <div className="text-white font-bold text-lg font-fredoka mb-4">
-            SatoshiMKT
+            Prediz.teck
           </div>
           <p className="text-xs leading-relaxed max-w-[200px]">
             A maior plataforma de mercados preditivos descentralizados do mundo.
@@ -36,7 +36,7 @@ export function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-[#242d40] flex justify-between items-center text-[10px] uppercase font-bold tracking-widest">
-        <span>© 2026 SatoshiMKT Clone — All rights reserved</span>
+        <span>© 2026 Prediz.teck — All rights reserved</span>
         <span className="text-gray-400">Desenvolvido com precisão por Antigravity</span>
       </div>
     </footer>

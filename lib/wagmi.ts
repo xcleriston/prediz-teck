@@ -19,10 +19,10 @@ export const wagmiConfig = createConfig({
     walletConnect({
       projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || "static-id-for-placeholder",
       metadata: {
-        name: "SatoshiMKT Clone",
+        name: "Prediz.teck",
         description: "Prediction Market Platform",
-        url: "https://satoshimkt.com",
-        icons: ["https://satoshimkt.com/logo.png"],
+        url: "https://prediz.teck",
+        icons: ["https://prediz.teck/logo.png"],
       },
     }),
   ],

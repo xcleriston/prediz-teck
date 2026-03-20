@@ -12,7 +12,7 @@ export function getMoonPayUrl(walletAddress: string) {
     baseCurrencyAmount: "50", // Suggested initial amount
     lockAmount: "false",
     showStepLine: "true",
-    colorCode: "%23ADFF2F", // SatoshiMKT Primary color
+    colorCode: "%23ADFF2F", // Prediz.teck Primary color
   });
 
   return `${base}?${params.toString()}`;

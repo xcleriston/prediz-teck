@@ -15,8 +15,8 @@ export function Header() {
       
       {/* LOGO */}
       <div className="text-white font-bold text-xl font-fredoka tracking-tight flex items-center gap-2">
-        <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-black font-black">S</div>
-        SatoshiMKT
+        <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-black font-black">P</div>
+        Prediz.teck
       </div>
 
       {/* SEARCH */}
