@@ -3,6 +3,9 @@ import { db } from "@/lib/db";
 import { markets } from "@/drizzle/schema";
 import { Plus, Settings, BarChart3, Users } from "lucide-react";
 
+// Force dynamic rendering - never pre-render at build time
+export const dynamic = 'force-dynamic';
+
 export default async function AdminPage() {
   const allMarkets = await db.select().from(markets);
 
