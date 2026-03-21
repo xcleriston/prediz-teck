@@ -9,56 +9,56 @@ export function WelcomeBanner() {
   if (closed) return null;
 
   return (
-    <div className="relative rounded-2xl border overflow-hidden cursor-pointer border-[#1f2937] bg-[#0f1729] mb-6 hover:border-[#ADFF2F]/40 transition-all">
+    <div className="relative rounded-xl border overflow-hidden cursor-pointer border-[#1f2937] bg-[#0f1729] mb-4 hover:border-[#ADFF2F]/40 transition-all">
       {/* Close button */}
       <button 
         onClick={() => setClosed(true)}
-        className="absolute top-3 right-3 p-2 rounded-full hover:bg-[#1f2937] transition-colors z-20" 
+        className="absolute top-2 right-2 p-1.5 rounded-full hover:bg-[#1f2937] transition-colors z-20" 
         aria-label="Fechar"
       >
-        <X className="w-5 h-5 text-gray-400 hover:text-white" />
+        <X className="w-4 h-4 text-gray-400 hover:text-white" />
       </button>
 
-      <div className="p-6 sm:p-8">
+      <div className="p-4 sm:p-6">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">Bem-vindo à Prediz.tech!</h2>
-          <p className="text-sm sm:text-base text-gray-400">Preveja eventos do mundo real e ganhe dinheiro</p>
+        <div className="text-center mb-5">
+          <h2 className="text-lg sm:text-xl font-bold text-white mb-1">Bem-vindo à Prediz.tech!</h2>
+          <p className="text-xs sm:text-sm text-gray-400">Preveja eventos do mundo real e ganhe dinheiro</p>
         </div>
 
         {/* Info Cards Grid - 3 columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
           {/* Card 1 */}
-          <div className="flex flex-col items-start p-5 rounded-xl bg-[#1a2335] border border-[#1f2937] hover:border-[#ADFF2F]/30 transition-all">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center mb-3 bg-[#ADFF2F]/20">
-              <TrendingUp className="w-5 h-5 text-[#ADFF2F]" />
+          <div className="flex flex-col items-start p-3 rounded-lg bg-[#1a2335] border border-[#1f2937] hover:border-[#ADFF2F]/30 transition-all">
+            <div className="w-8 h-8 rounded-full flex items-center justify-center mb-2 bg-[#ADFF2F]/20">
+              <TrendingUp className="w-4 h-4 text-[#ADFF2F]" />
             </div>
-            <h3 className="font-semibold text-white mb-1 text-sm">Escolha um Mercado</h3>
-            <p className="text-xs text-gray-400">Navegue por centenas de mercados sobre política, esportes, crypto e mais</p>
+            <h3 className="font-semibold text-white mb-0.5 text-xs">Escolha um Mercado</h3>
+            <p className="text-[11px] text-gray-400">Navegue por centenas de mercados sobre política, esportes, crypto e mais</p>
           </div>
 
           {/* Card 2 */}
-          <div className="flex flex-col items-start p-5 rounded-xl bg-[#1a2335] border border-[#1f2937] hover:border-[#ADFF2F]/30 transition-all">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center mb-3 bg-[#ADFF2F]/20">
-              <Coins className="w-5 h-5 text-[#ADFF2F]" />
+          <div className="flex flex-col items-start p-3 rounded-lg bg-[#1a2335] border border-[#1f2937] hover:border-[#ADFF2F]/30 transition-all">
+            <div className="w-8 h-8 rounded-full flex items-center justify-center mb-2 bg-[#ADFF2F]/20">
+              <Coins className="w-4 h-4 text-[#ADFF2F]" />
             </div>
-            <h3 className="font-semibold text-white mb-1 text-sm">Compre SIM ou NÃO</h3>
-            <p className="text-xs text-gray-400">Aposte se o evento vai acontecer ou não com qualquer valor</p>
+            <h3 className="font-semibold text-white mb-0.5 text-xs">Compre SIM ou NÃO</h3>
+            <p className="text-[11px] text-gray-400">Aposte se o evento vai acontecer ou não com qualquer valor</p>
           </div>
 
           {/* Card 3 */}
-          <div className="flex flex-col items-start p-5 rounded-xl bg-[#1a2335] border border-[#1f2937] hover:border-[#ADFF2F]/30 transition-all">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center mb-3 bg-[#ADFF2F]/20">
-              <Trophy className="w-5 h-5 text-[#ADFF2F]" />
+          <div className="flex flex-col items-start p-3 rounded-lg bg-[#1a2335] border border-[#1f2937] hover:border-[#ADFF2F]/30 transition-all">
+            <div className="w-8 h-8 rounded-full flex items-center justify-center mb-2 bg-[#ADFF2F]/20">
+              <Trophy className="w-4 h-4 text-[#ADFF2F]" />
             </div>
-            <h3 className="font-semibold text-white mb-1 text-sm">Ganhe se Acertar</h3>
-            <p className="text-xs text-gray-400">Receba até 100% de retorno se sua previsão estiver correta</p>
+            <h3 className="font-semibold text-white mb-0.5 text-xs">Ganhe se Acertar</h3>
+            <p className="text-[11px] text-gray-400">Receba até 100% de retorno se sua previsão estiver correta</p>
           </div>
         </div>
 
         {/* CTA Button */}
-        <div className="text-center mt-8">
-          <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm transition-all duration-150 active:scale-95 h-11 py-2 bg-[#ADFF2F] text-gray-900 hover:bg-[#9AE626] font-bold px-10 shadow-lg shadow-[#ADFF2F]/20">
+        <div className="text-center mt-4">
+          <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-xs transition-all duration-150 active:scale-95 h-9 py-2 bg-[#ADFF2F] text-gray-900 hover:bg-[#9AE626] font-bold px-8 shadow-md shadow-[#ADFF2F]/20">
             Explorar Mercados
           </button>
         </div>

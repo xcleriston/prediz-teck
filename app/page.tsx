@@ -12,7 +12,7 @@ export default function Home() {
     <div className="min-h-screen bg-[#0d1421] text-white">
       <DashboardHeader />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
         <WelcomeBanner />
         
         <MarketFilters />

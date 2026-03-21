@@ -138,13 +138,13 @@ export function MarketGrid() {
   ];
 
   return (
-    <div id="markets-section" className="space-y-6 sm:space-y-8">
+    <div id="markets-section" className="space-y-4 sm:space-y-5">
       <section>
-        <div className="flex items-center gap-2 mb-4">
-          <span className="text-xl">🔥</span>
-          <h2 className="text-base font-bold text-white">Destaques</h2>
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-lg">🔥</span>
+          <h2 className="text-sm font-bold text-white">Destaques</h2>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
           {markets.slice(0, 8).map((market, idx) => (
             <MarketCard
               key={idx}
@@ -167,11 +167,11 @@ export function MarketGrid() {
 
       {/* TRENDING MARKETS SECTION */}
       <section>
-        <div className="flex items-center gap-2 mb-4">
-          <span className="text-xl">📈</span>
-          <h2 className="text-base font-bold text-white">Em Tendência</h2>
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-lg">📈</span>
+          <h2 className="text-sm font-bold text-white">Em Tendência</h2>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
           {markets.slice(0, 8).map((market, idx) => (
             <MarketCard
               key={`trending-${idx}`}
@@ -194,11 +194,11 @@ export function MarketGrid() {
 
       {/* FEATURED MARKETS SECTION */}
       <section>
-        <div className="flex items-center gap-2 mb-4">
-          <span className="text-xl">⭐</span>
-          <h2 className="text-base font-bold text-white">Recomendados</h2>
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-lg">⭐</span>
+          <h2 className="text-sm font-bold text-white">Recomendados</h2>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
           {markets.slice(0, 8).map((market, idx) => (
             <MarketCard
               key={`featured-${idx}`}
