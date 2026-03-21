@@ -84,8 +84,14 @@ export default function Home() {
       <MarketFilters onFilter={setCategory} />
 
       <main className="max-w-7xl mx-auto px-4 py-6">
-        {/* MARKET GRID — explicit .markets-grid class to ensure 4 cols in production */}
-        <section className="markets-grid">
+        {/* MARKET GRID — inline style guarantees 4 cols regardless of Tailwind purge */}
+        <section
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
+            gap: "1rem",
+          }}
+        >
           {filtered.map((market, i) => (
             <MarketCard key={i} {...market} />
           ))}
