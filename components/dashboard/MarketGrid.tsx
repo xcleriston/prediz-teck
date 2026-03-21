@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import Image from "next/image";
-import { Code, Share2, Star, Clock, Users, Sparkles } from "lucide-react";
+import { Clock } from "lucide-react";
+import { MarketCard } from "../market/MarketCard";
 
 interface BinaryMarketProps {
   title: string;
@@ -18,89 +18,15 @@ interface BinaryMarketProps {
   lmsr?: string;
 }
 
-function BinaryMarketCard({ m }: { m: BinaryMarketProps }) {
-  return (
-    <div className="group p-4 sm:p-5 rounded-2xl border bg-[#151c2c] border-[#242d40] transition-all cursor-pointer relative">
-      <div className="flex items-center justify-between mb-2 pr-0">
-        <div className="flex items-center gap-1.5 flex-wrap min-w-0">
-          {m.badge && (
-            <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium border ${m.badge.colorClass}`}>
-              <span>{m.badge.icon}</span>{m.badge.name}
-            </span>
-          )}
-          {!m.badge && m.category && (
-            <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium border ${m.category.colorClass}`}>
-              <span>{m.category.icon}</span>{m.category.name}
-            </span>
-          )}
-        </div>
-        <div className="flex items-center gap-1 flex-shrink-0">
-          <button className="p-1 text-gray-500 hover:text-white"><Code className="w-3 h-3 sm:w-4 sm:h-4" /></button>
-          <button className="p-1 text-gray-500 hover:text-white"><Share2 className="w-4 h-4 sm:w-5 sm:h-5" /></button>
-          <button className="p-1 text-gray-500 hover:text-[#ADFF2F]"><Star className="w-4 h-4 sm:w-5 sm:h-5" /></button>
-        </div>
-      </div>
-
-      <div className="flex gap-3 sm:gap-4 mb-3 sm:mb-4">
-        <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-xl overflow-hidden flex-shrink-0">
-          <img src={m.image} alt={m.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-        </div>
-        <div className="flex-1 min-w-0">
-          <h3 className="font-bold line-clamp-2 text-sm sm:text-base transition-colors text-white">{m.title}</h3>
-          <div className="flex items-center gap-2 sm:gap-3 mt-1.5 sm:mt-2 text-[10px] sm:text-xs text-gray-400">
-            <span className="flex items-center gap-1">
-              <Clock className="w-3 h-3" /><span className="hidden xs:inline">{m.timeLeft}</span>
-            </span>
-            <span className="flex items-center gap-1">
-              <Users className="w-3 h-3" />{m.participants}
-              <Sparkles className="w-3 h-3 text-[#ADFF2F] opacity-70" />
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div className="mb-3 sm:mb-4">
-        <div className="flex justify-between items-center mb-1 sm:mb-1.5">
-          <span className="text-xs sm:text-sm font-semibold text-gray-300">Sim</span>
-          <span className="text-xs sm:text-sm font-bold text-[#ADFF2F]">{m.yesProb}%</span>
-        </div>
-        <div className="h-1.5 sm:h-2 rounded-full overflow-hidden bg-[#242d40]">
-          <div className="h-full bg-gradient-to-r from-[#ADFF2F] to-[#7CB518] rounded-full transition-all duration-500" style={{ width: `${m.yesProb}%` }}></div>
-        </div>
-      </div>
-
-      <div className="flex gap-2">
-        <button className="flex-1 py-2.5 sm:py-3 rounded-xl border text-xs sm:text-sm transition-colors flex flex-col items-center bg-[#ADFF2F]/10 border-[#ADFF2F]/50 text-[#ADFF2F] hover:bg-[#ADFF2F]/20">
-          <span className="font-semibold">Comprar Sim {m.yesProb}%</span>
-          <span className="text-[10px] sm:text-xs opacity-80">Paga {m.paysYes}</span>
-        </button>
-        <button className="flex-1 py-2.5 sm:py-3 rounded-xl border text-xs sm:text-sm transition-colors flex flex-col items-center bg-red-500/10 border-red-500/50 text-red-400 hover:bg-red-500/20">
-          <span className="font-semibold">Comprar Não {100 - m.yesProb}%</span>
-          <span className="text-[10px] sm:text-xs opacity-80">Paga {m.paysNo}</span>
-        </button>
-      </div>
-
-      <div className="mt-2.5 sm:mt-3 pt-2.5 sm:pt-3 border-t flex items-center justify-between text-[10px] sm:text-xs border-[#242d40] text-gray-400">
-        <div className="flex items-center gap-1.5 flex-wrap">
-          <span>{m.volume} Vol.</span>
-          <span className={`inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full ${m.spi.bgClass} ${m.spi.textClass} text-[9px] font-medium`}>
-            <span>{m.spi.dot}</span><span>SPI {m.spi.value}</span>
-          </span>
-          {m.lmsr && (
-            <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-blue-500/15 text-blue-400 text-[9px] font-medium">LMSR {m.lmsr}</span>
-          )}
-        </div>
-        <span className="text-[#ADFF2F] font-medium cursor-pointer hover:underline">Negociar →</span>
-      </div>
-    </div>
-  );
-}
-
 function MultiChoiceMarketCard() {
   return (
-    <div className="rounded-2xl border overflow-hidden bg-[#151c2c] border-[#242d40] cursor-pointer transition-all hover:border-[#ADFF2F]/50">
+    <div className="rounded-2xl border overflow-hidden bg-[#151c2c] border-[#242d40] cursor-pointer transition-all hover:border-[#ADFF2F]/30 hover:shadow-lg hover:shadow-[#ADFF2F]/10">
       <div className="relative h-28 overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=800&q=80" alt="Quando BTC atingirá $200k?" className="w-full h-full object-cover" />
+        <img 
+          src="https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=800&q=80" 
+          alt="Quando BTC atingirá $200k?" 
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
         <div className="absolute bottom-2 left-3 flex items-center gap-1.5">
           <Clock className="w-3.5 h-3.5 text-[#ADFF2F]" />
@@ -214,18 +140,83 @@ export function MarketGrid() {
   return (
     <div id="markets-section" className="space-y-6 sm:space-y-8">
       <section>
-        <div className="flex items-center gap-2 mb-3 sm:mb-4">
+        <div className="flex items-center gap-2 mb-4 sm:mb-5">
           <span className="text-xl">🔥</span>
           <h2 className="text-base sm:text-lg font-bold text-white">Destaques</h2>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
-          <BinaryMarketCard m={markets[0]} />
-          <BinaryMarketCard m={markets[1]} />
-          <BinaryMarketCard m={markets[2]} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+          {markets.slice(0, 7).map((market, idx) => (
+            <MarketCard
+              key={idx}
+              title={market.title}
+              image={market.image}
+              category={market.category}
+              badge={market.badge}
+              timeLeft={market.timeLeft}
+              participants={market.participants}
+              yesProb={market.yesProb}
+              paysYes={market.paysYes}
+              paysNo={market.paysNo}
+              volume={market.volume}
+              spi={market.spi}
+              lmsr={market.lmsr}
+            />
+          ))}
           <MultiChoiceMarketCard />
-          <BinaryMarketCard m={markets[3]} />
-          <BinaryMarketCard m={markets[4]} />
-          <BinaryMarketCard m={markets[5]} />
+        </div>
+      </section>
+
+      {/* TRENDING MARKETS SECTION */}
+      <section>
+        <div className="flex items-center gap-2 mb-4 sm:mb-5">
+          <span className="text-xl">📈</span>
+          <h2 className="text-base sm:text-lg font-bold text-white">Tendência</h2>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+          {markets.slice(0, 4).map((market, idx) => (
+            <MarketCard
+              key={`trending-${idx}`}
+              title={market.title}
+              image={market.image}
+              category={market.category}
+              badge={market.badge}
+              timeLeft={market.timeLeft}
+              participants={market.participants}
+              yesProb={market.yesProb}
+              paysYes={market.paysYes}
+              paysNo={market.paysNo}
+              volume={market.volume}
+              spi={market.spi}
+              lmsr={market.lmsr}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* FEATURED MARKETS SECTION */}
+      <section>
+        <div className="flex items-center gap-2 mb-4 sm:mb-5">
+          <span className="text-xl">⭐</span>
+          <h2 className="text-base sm:text-lg font-bold text-white">Em Alta</h2>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+          {markets.slice(2, 6).map((market, idx) => (
+            <MarketCard
+              key={`featured-${idx}`}
+              title={market.title}
+              image={market.image}
+              category={market.category}
+              badge={market.badge}
+              timeLeft={market.timeLeft}
+              participants={market.participants}
+              yesProb={market.yesProb}
+              paysYes={market.paysYes}
+              paysNo={market.paysNo}
+              volume={market.volume}
+              spi={market.spi}
+              lmsr={market.lmsr}
+            />
+          ))}
         </div>
       </section>
     </div>

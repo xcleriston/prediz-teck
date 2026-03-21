@@ -3,8 +3,24 @@
 @tailwind utilities;
 
 :root {
-    --background: #0A0F1A;
-    --foreground: #F8FAFC;
+    /* Dark Theme - Satoshi MKT */
+    --background: #0d1421;
+    --foreground: #ffffff;
+    
+    /* Primary Colors */
+    --primary-green: #ADFF2F;
+    --primary-dark-green: #7CB518;
+    --danger-red: #ff4d4d;
+    
+    /* Card & Surface Colors */
+    --card-bg: #151c2c;
+    --card-border: #242d40;
+    --card-bg-hover: #1a2235;
+    
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: #a0a9c9;
+    --text-tertiary: #6b7280;
 }
 
 body {
@@ -14,34 +30,107 @@ body {
     overflow-x: hidden;
 }
 
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--card-border);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-green);
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
 @layer utilities {
     .text-balance {
-          text-wrap: balance;
+        text-wrap: balance;
     }
 
-  .glass-panel {
-        background: rgba(255, 255, 255, 0.05);
+    /* Glass morphism panels */
+    .glass-panel {
+        background: rgba(21, 28, 44, 0.8);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  }
+        border: 1px solid rgba(173, 255, 47, 0.1);
+    }
 
-  .glass-panel-dark {
-        background: rgba(15, 23, 42, 0.8);
+    .glass-panel-dark {
+        background: rgba(13, 20, 33, 0.9);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-  }
+        border: 1px solid rgba(173, 255, 47, 0.05);
+    }
 
-  .text-gradient {
-        background: linear-gradient(to right, #8B00FF, #A020F0);
+    /* Gradient utilities */
+    .text-gradient {
+        background: linear-gradient(135deg, #ADFF2F, #7CB518);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-  }
+    }
 
-  .bg-gradient-primary {
-        background: linear-gradient(to right, #8B00FF, #A020F0);
-  }
+    .bg-gradient-primary {
+        background: linear-gradient(135deg, #ADFF2F, #7CB518);
+    }
+
+    /* Market card shadows */
+    .card-shadow {
+        box-shadow: 0 4px 12px rgba(173, 255, 47, 0.08);
+    }
+
+    .card-shadow-hover {
+        box-shadow: 0 12px 24px rgba(173, 255, 47, 0.15);
+    }
+
+    /* Pulsing animation */
+    .animate-pulse-custom {
+        animation: pulse-custom 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulse-custom {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+    }
+
+    /* Loading animation */
+    @keyframes shimmer {
+        0% {
+            background-position: -1000px 0;
+        }
+        100% {
+            background-position: 1000px 0;
+        }
+    }
+
+    .animate-shimmer {
+        animation: shimmer 2s infinite;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(173, 255, 47, 0.1),
+            transparent
+        );
+        background-size: 1000px 100%;
+    }
 }

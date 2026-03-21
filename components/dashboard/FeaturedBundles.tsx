@@ -10,36 +10,39 @@ export function FeaturedBundles() {
   ];
 
   return (
-    <div className="mb-6">
-      <h2 className="text-base md:text-lg font-bold mb-3 text-white">🔥 Coleções em Destaque</h2>
+    <div className="mb-8">
+      <div className="flex items-center gap-2 mb-4">
+        <span className="text-xl">🔥</span>
+        <h2 className="text-base sm:text-lg font-bold text-white">Coleções em Destaque</h2>
+      </div>
       <div className="relative w-full">
         <div className="overflow-x-auto scrollbar-hide">
-          <div className="flex gap-3 pb-2">
+          <div className="flex gap-4 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
             {bundles.map((bundle, i) => (
-              <div key={i} className="min-w-0 shrink-0 basis-[85%] sm:basis-[60%] md:basis-1/3">
-                <div className="bg-card text-card-foreground shadow-sm relative overflow-hidden h-[200px] md:h-[240px] cursor-pointer border-0 rounded-2xl group">
-                  <div className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style={{ backgroundImage: `url(${bundle.img})` }}></div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20"></div>
-                  <div className="relative z-10 h-full p-4 flex flex-col justify-between">
-                    <div className="flex items-center gap-1.5">
-                      <span className="text-lg">{bundle.groupIcon}</span>
-                      <span className="text-white/70 text-xs font-medium uppercase tracking-wide">{bundle.group}</span>
+              <div key={i} className="min-w-0 shrink-0 basis-full sm:basis-[48%] lg:basis-1/3">
+                <div className="relative overflow-hidden h-48 sm:h-56 md:h-64 cursor-pointer rounded-2xl border border-[#242d40] group transition-all hover:border-[#ADFF2F]/30 hover:shadow-lg hover:shadow-[#ADFF2F]/10">
+                  <div className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style={{ backgroundImage: `url(${bundle.img})` }}></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d1421]/95 via-[#0d1421]/60 to-transparent"></div>
+                  <div className="relative z-10 h-full p-4 sm:p-5 flex flex-col justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="text-lg sm:text-xl">{bundle.groupIcon}</span>
+                      <span className="text-gray-400 text-xs font-semibold uppercase tracking-wider">{bundle.group}</span>
                       {bundle.featured && (
-                        <span className="ml-auto text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#ADFF2F]/20 text-[#ADFF2F] border border-[#ADFF2F]/30">⭐ Featured</span>
+                        <span className="ml-auto text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#ADFF2F]/20 text-[#ADFF2F] border border-[#ADFF2F]/40">⭐ Destaque</span>
                       )}
                     </div>
                     <div className="space-y-2">
-                      <h3 className="text-white font-bold text-base md:text-lg leading-tight line-clamp-2">{bundle.title}</h3>
-                      <p className="text-white/60 text-xs line-clamp-1">{bundle.desc}</p>
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3 text-white/70 text-xs">
+                      <h3 className="text-white font-bold text-base sm:text-lg leading-tight line-clamp-2">{bundle.title}</h3>
+                      <p className="text-gray-400 text-xs sm:text-sm line-clamp-1">{bundle.desc}</p>
+                      <div className="flex items-center justify-between pt-1">
+                        <div className="flex items-center gap-2 text-gray-500 text-xs">
                           <span>{bundle.markets} mercados</span>
                           <span>•</span>
                           <span>{bundle.vol} 🌿</span>
                         </div>
-                        <div className="flex items-center gap-1 text-[#ADFF2F] text-xs font-semibold">
-                          <Layers className="w-3 h-3" />
-                          <span>Apostar em Todos</span>
+                        <div className="flex items-center gap-1.5 text-[#ADFF2F] text-xs font-semibold hover:text-[#ADFF2F]/80 transition">
+                          <Layers className="w-3.5 h-3.5" />
+                          <span className="hidden sm:inline">Todos</span>
                         </div>
                       </div>
                     </div>

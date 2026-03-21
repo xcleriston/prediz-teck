@@ -100,13 +100,13 @@ export function DashboardHeader() {
       <div className="border-t border-[#242d40]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex items-center gap-1 overflow-x-auto py-2 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
-            <button className="flex items-center gap-1 px-2.5 sm:px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-all flex-shrink-0 bg-[#ADFF2F]/30 text-[#ADFF2F] border border-[#ADFF2F]">
-              <span className="text-sm sm:text-base">🌐</span><span className="hidden xs:inline sm:inline">Todos</span>
+            <button className="flex items-center gap-1 px-3 sm:px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all flex-shrink-0 bg-[#ADFF2F]/20 text-[#ADFF2F] border border-[#ADFF2F]/60 hover:bg-[#ADFF2F]/30">
+              <span className="text-sm sm:text-base">🌐</span><span className="hidden xs:inline">Todos</span>
             </button>
             {['🏛️ Política', '⚽ Esportes', '₿ Cripto', '📈 Finanças', '💹 Economia', '📱 Social', '♻️ Meio Ambiente', '💻 Tecnologia', '🎬 Entretenimento', '🎮 Jogos', '🌎 Mundo'].map((cat, i) => (
-              <button key={i} className="flex items-center gap-1 px-2.5 sm:px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-all flex-shrink-0 text-gray-300 hover:bg-[#242d40]">
+              <button key={i} className="flex items-center gap-1 px-3 sm:px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-all flex-shrink-0 text-gray-400 hover:text-gray-200 hover:bg-[#242d40]">
                 <span className="text-sm sm:text-base">{cat.split(' ')[0]}</span>
-                <span className="hidden xs:inline sm:inline">{cat.split(' ').slice(1).join(' ')}</span>
+                <span className="hidden xs:inline">{cat.split(' ').slice(1).join(' ')}</span>
               </button>
             ))}
           </nav>
