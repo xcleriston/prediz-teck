@@ -19,6 +19,22 @@ body {
   }
 }
 
+/* Explicit 4-column markets grid — needed to avoid Tailwind purge issues */
+.markets-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 640px) {
+  .markets-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .markets-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 1280px) {
+  .markets-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
