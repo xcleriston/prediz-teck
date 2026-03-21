@@ -1,60 +1,66 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { PlusCircle, Droplet, Share2 } from "lucide-react";
+import { PlusCircle, Webhook, Coins } from "lucide-react";
 
 const STEPS = [
   {
-    icon: <PlusCircle size={24} className="text-[#A020F0]" />,
-    title: "1. Crie seu mercado",
-    desc: "Defina a pergunta, as opções de resposta e a data de resolução em segundos. Sem código necessário."
+    num: "01",
+    title: "Market Creation",
+    desc: "Define parameters, dates, and outcomes. Our engine instantly compiles the deterministic smart contract logic.",
+    icon: <PlusCircle size={40} className="text-[#A020F0]" />
   },
   {
-    icon: <Droplet size={24} className="text-[#A020F0]" />,
-    title: "2. Adicione liquidez",
-    desc: "Injete capital inicial para definir as probabilidades e atrair os primeiros traders para o seu mercado."
+    num: "02",
+    title: "Inject Liquidity",
+    desc: "Seed the LMSR pool. This establishes the initial probability curve and guarantees execution for the first traders.",
+    icon: <Coins size={40} className="text-white" />
   },
   {
-    icon: <Share2 size={24} className="text-[#A020F0]" />,
-    title: "3. Compartilhe e monetize",
-    desc: "Sua comunidade negocia. Você ganha uma porcentagem de todo o volume transacionado na plataforma."
+    num: "03",
+    title: "Earn Volume Fees",
+    desc: "As your community trades, you automatically collect a percentage of every transaction directly to your treasury.",
+    icon: <Webhook size={40} className="text-[#A020F0]" />
   }
 ];
 
 export function HowItWorksSection() {
   return (
-    <section id="how-it-works" className="py-24 relative border-y border-white/5 bg-[#0a0f1a]/50">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="how-it-works" className="py-32 relative bg-[#0f1524] border-y-2 border-white/5">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
         
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-            Simples, rápido e poderoso.
+        <div className="mb-24">
+          <h2 className="text-4xl lg:text-5xl font-black text-white uppercase tracking-tighter">
+            Operational Flow.
           </h2>
-          <p className="text-gray-400">
-            Lançar um mercado preditivo costumava levar meses de engenharia complexa. Com a Prediz.tech, você faz isso em minutos.
-          </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 relative">
-          {/* Connecting line for desktop */}
-          <div className="hidden md:block absolute top-[28px] left-[10%] right-[10%] h-[1px] bg-gradient-to-r from-transparent via-[#A020F0]/50 to-transparent -z-10" />
+        <div className="flex flex-col gap-12 lg:gap-24 relative">
+          {/* Vertical connecting line */}
+          <div className="absolute left-[40px] lg:left-[80px] top-0 bottom-0 w-1 bg-white/5" />
 
           {STEPS.map((step, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.2 }}
-              className="flex flex-col items-center text-center relative group"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ delay: i * 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="relative flex items-center md:items-start gap-8 lg:gap-16 group"
             >
-              <div className="w-14 h-14 rounded-2xl glass-panel-dark flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_rgba(160,32,240,0.1)] group-hover:shadow-[0_0_30px_rgba(160,32,240,0.3)]">
-                {step.icon}
+              {/* Step Icon / Number node */}
+              <div className="w-[80px] h-[80px] lg:w-[160px] lg:h-[160px] shrink-0 bg-[#0A0F1A] border-2 border-white/10 rounded-full flex flex-col items-center justify-center relative z-10 group-hover:border-[#A020F0] group-hover:scale-110 transition-all duration-500">
+                <div className="text-[#A020F0] font-black text-2xl lg:text-5xl opacity-50 mb-1 lg:mb-2">{step.num}</div>
+                <div className="scale-50 lg:scale-100">{step.icon}</div>
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
-              <p className="text-sm text-gray-400 leading-relaxed shadow-sm">
-                {step.desc}
-              </p>
+
+              {/* Content Panel */}
+              <div className="flex-1 bg-white/[0.02] border-2 border-white/5 rounded-[32px] p-8 lg:p-12 hover:bg-white/[0.04] transition-colors relative mt-0 lg:mt-8">
+                <h3 className="text-2xl lg:text-4xl font-black text-white mb-4 uppercase tracking-tight">{step.title}</h3>
+                <p className="text-gray-400 text-lg font-medium leading-relaxed max-w-2xl">
+                  {step.desc}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>
