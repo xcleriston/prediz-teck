@@ -1,65 +1,90 @@
 "use client";
 
-import { Search, Globe, User, ShieldCheck } from "lucide-react";
-import { ConnectWallet } from "../web3/ConnectWallet";
 import { useState } from "react";
+import { Search, Bell, Globe, User, ChevronDown } from "lucide-react";
 import { DepositModal } from "../payment/DepositModal";
 import { KycModal } from "../kyc/KycModal";
 
 export function Header() {
   const [isDepositOpen, setIsDepositOpen] = useState(false);
   const [isKycOpen, setIsKycOpen] = useState(false);
+  const [mode, setMode] = useState<"BRL" | "Token">("BRL");
 
   return (
-    <header className="bg-[#0d1421] border-b border-[#242d40] px-6 py-4 flex items-center justify-between sticky top-0 z-50 font-nunito">
+    <header className="bg-white border-b border-gray-200 px-4 py-2.5 flex items-center gap-3 sticky top-0 z-50 shadow-sm">
       
       {/* LOGO */}
-      <div className="text-white font-bold text-xl font-fredoka tracking-tight flex items-center gap-2">
-        <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-black font-black">P</div>
-        Prediz.teck
+      <div className="flex items-center gap-1.5 shrink-0 mr-2">
+        <div className="w-7 h-7 bg-primary rounded-lg flex items-center justify-center text-white font-black text-sm">P</div>
+        <span className="font-bold text-gray-900 text-[15px] tracking-tight">Prediz.teck</span>
       </div>
 
-      {/* SEARCH */}
-      <div className="hidden lg:flex items-center bg-[#151c2c] px-4 py-2 rounded-lg w-[400px] border border-[#242d40] focus-within:border-primary/50 transition">
-        <Search size={16} className="text-gray-400" />
-        <input
-          placeholder="Buscar mercados preditivos..."
-          className="bg-transparent outline-none ml-2 text-white w-full text-sm"
-        />
+      {/* SEARCH BAR — centered like satoshimkt */}
+      <div className="flex-1 max-w-[480px] mx-auto">
+        <div className="flex items-center bg-gray-100 rounded-xl px-3 py-2 gap-2 border border-transparent focus-within:border-primary/30 focus-within:bg-white transition-all">
+          <Search size={15} className="text-gray-400 shrink-0" />
+          <input
+            type="text"
+            placeholder="Buscar mercados..."
+            className="bg-transparent outline-none text-sm text-gray-700 placeholder:text-gray-400 w-full"
+          />
+        </div>
       </div>
 
-      {/* RIGHT */}
-      <div className="flex items-center gap-4">
-        <div className="hidden sm:flex items-center gap-4 mr-2">
-           <button 
-             onClick={() => setIsKycOpen(true)}
-             className="text-gray-400 hover:text-primary transition flex items-center gap-1 text-xs font-bold"
-           >
-             <ShieldCheck size={16} />
-             KYC
-           </button>
-           <Globe className="text-gray-400 hover:text-white cursor-pointer transition" size={18} />
+      {/* RIGHT SIDE */}
+      <div className="flex items-center gap-2 shrink-0 ml-auto">
+
+        {/* BRL / Token toggle */}
+        <div className="hidden md:flex items-center bg-gray-100 rounded-lg p-0.5 text-[12px] font-bold">
+          <button
+            onClick={() => setMode("BRL")}
+            className={`px-3 py-1.5 rounded-md transition-all ${
+              mode === "BRL" ? "bg-white text-gray-900 shadow-sm" : "text-gray-500"
+            }`}
+          >
+            BRL
+          </button>
+          <button
+            onClick={() => setMode("Token")}
+            className={`px-3 py-1.5 rounded-md transition-all ${
+              mode === "Token" ? "bg-white text-gray-900 shadow-sm" : "text-gray-500"
+            }`}
+          >
+            Token
+          </button>
         </div>
 
-        <div className="flex items-center gap-2 px-3 py-1.5 bg-[#151c2c] rounded-lg border border-[#242d40] shadow-inner">
-           <span className="text-primary text-[10px] font-black uppercase tracking-tighter">Saldo</span>
-           <span className="text-white text-xs font-bold">🌿 120.00</span>
-        </div>
-
-        <button 
-          onClick={() => setIsDepositOpen(true)}
-          className="bg-primary text-black px-5 py-2 rounded-lg font-black hover:brightness-110 active:scale-95 transition text-xs shadow-[0_4px_10px_rgba(173,255,47,0.3)]"
-        >
-          DEPOSITAR
+        {/* Notifications */}
+        <button className="relative p-2 rounded-xl bg-gray-100 text-gray-500 hover:text-gray-800 transition">
+          <Bell size={16} />
+          <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full" />
         </button>
 
-        <div className="h-8 w-px bg-[#242d40] mx-1" />
+        {/* Language */}
+        <button className="hidden md:flex items-center gap-1 p-2 rounded-xl bg-gray-100 text-gray-500 hover:text-gray-800 transition">
+          <Globe size={16} />
+        </button>
 
-        <ConnectWallet />
-
-        <div className="w-9 h-9 rounded-full bg-[#151c2c] border border-[#242d40] flex items-center justify-center text-gray-500 hover:text-white cursor-pointer transition">
-           <User size={18} />
+        {/* Balance */}
+        <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-100 text-sm">
+          <span className="text-gray-400 text-[11px]">Saldo</span>
+          <span className="font-bold text-gray-900">R$ 120,00</span>
         </div>
+
+        {/* Deposit */}
+        <button
+          onClick={() => setIsDepositOpen(true)}
+          className="hidden sm:block bg-primary text-white text-[12px] font-bold px-3 py-2 rounded-xl hover:bg-primary-dark transition"
+        >
+          Depositar
+        </button>
+
+        {/* Login / Profile */}
+        <button className="flex items-center gap-1.5 bg-primary text-white text-[12px] font-bold px-3 py-2 rounded-xl hover:bg-primary-dark transition">
+          <User size={14} />
+          <span className="hidden sm:inline">Entrar</span>
+          <ChevronDown size={12} />
+        </button>
       </div>
 
       <DepositModal isOpen={isDepositOpen} onClose={() => setIsDepositOpen(false)} />

@@ -1,8 +1,23 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
-import { Flame, Users, Clock } from "lucide-react";
+import { Share2, Heart, Star, Users, Clock, TrendingUp } from "lucide-react";
+import { useState } from "react";
+
+// Category badge colors — matching satoshimkt.com
+const CATEGORY_COLORS: Record<string, { bg: string; text: string }> = {
+  Esportes: { bg: "bg-orange-100", text: "text-orange-600" },
+  Cripto: { bg: "bg-yellow-100", text: "text-yellow-700" },
+  Política: { bg: "bg-blue-100", text: "text-blue-600" },
+  Finanças: { bg: "bg-green-100", text: "text-green-700" },
+  Tecnologia: { bg: "bg-purple-100", text: "text-purple-700" },
+  Entretenimento: { bg: "bg-pink-100", text: "text-pink-600" },
+  Economia: { bg: "bg-teal-100", text: "text-teal-700" },
+  Social: { bg: "bg-red-100", text: "text-red-600" },
+  "Meio Ambiente": { bg: "bg-emerald-100", text: "text-emerald-700" },
+  Jogos: { bg: "bg-indigo-100", text: "text-indigo-600" },
+  default: { bg: "bg-gray-100", text: "text-gray-600" },
+};
 
 type Props = {
   title: string;
@@ -13,6 +28,7 @@ type Props = {
   expiresAt: string;
   traders: number;
   trending?: boolean;
+  category?: string;
 };
 
 export function MarketCard({
@@ -23,75 +39,118 @@ export function MarketCard({
   volume,
   expiresAt,
   traders,
-  trending = true
+  trending = false,
+  category = "default",
 }: Props) {
+  const catStyle = CATEGORY_COLORS[category] ?? CATEGORY_COLORS.default;
+  const [liked, setLiked] = useState(false);
+  const [starred, setStarred] = useState(false);
+  const likeCount = Math.floor(Math.random() * 40) + 2;
+
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 10 }}
+    <motion.div
+      initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -5 }}
-      className="bg-[#151c2c] border border-[#242d40] rounded-xl p-4 hover:shadow-xl hover:shadow-black/40 transition-all group"
+      whileHover={{ y: -2, boxShadow: "0 8px 30px rgba(0,0,0,0.10)" }}
+      className="bg-white rounded-2xl border border-gray-200 overflow-hidden transition-all flex flex-col"
     >
-      
-      {/* IMAGE CONTAINER */}
-      <div className="flex gap-4">
-        <motion.div
-           whileHover={{ scale: 1.1 }}
-           className="w-[80px] h-[80px] rounded-lg overflow-hidden flex-shrink-0 bg-[#0d1421] border border-[#242d40]"
-        >
-          <img src={image} alt={title} className="w-full h-full object-cover" />
-        </motion.div>
+      {/* TOP ACTIONS */}
+      <div className="flex items-center justify-between px-3 pt-3 pb-1">
+        {/* Category badge */}
+        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${catStyle.bg} ${catStyle.text}`}>
+          {category !== "default" ? category : "Geral"}
+        </span>
 
-        <div className="flex flex-col justify-between py-1">
-          <h3 className="text-white font-semibold text-sm line-clamp-2 leading-tight group-hover:text-primary transition">
-            {title}
-          </h3>
+        {/* Action icons */}
+        <div className="flex items-center gap-2 text-gray-400">
+          <button className="hover:text-gray-600 transition flex items-center gap-0.5 text-[11px]">
+            <Heart
+              size={13}
+              onClick={() => setLiked(!liked)}
+              className={liked ? "fill-red-500 text-red-500" : ""}
+            />
+            <span>{liked ? likeCount + 1 : likeCount}</span>
+          </button>
+          <button className="hover:text-gray-600 transition">
+            <Share2 size={13} />
+          </button>
+          <button className="hover:text-yellow-400 transition" onClick={() => setStarred(!starred)}>
+            <Star size={13} className={starred ? "fill-yellow-400 text-yellow-400" : ""} />
+          </button>
+        </div>
+      </div>
 
-          {/* INFO CHIPS */}
-          <div className="flex gap-3 text-[10px] sm:text-xs text-gray-400 mt-2 font-spartan">
-            <span className="flex items-center gap-1">
-              <Clock size={12} /> {expiresAt}
+      {/* IMAGE */}
+      <div className="px-3">
+        <div className="w-full h-[140px] rounded-xl overflow-hidden bg-gray-100">
+          <img
+            src={image}
+            alt={title}
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src =
+                "https://placehold.co/400x140/f0f0f0/999?text=Market";
+            }}
+          />
+        </div>
+      </div>
+
+      {/* TITLE */}
+      <div className="px-3 pt-2 pb-1 flex-1">
+        <h3 className="text-gray-900 font-semibold text-[13px] leading-tight line-clamp-2">
+          {title}
+        </h3>
+
+        {/* META */}
+        <div className="flex items-center gap-3 mt-1.5 text-[11px] text-gray-400">
+          <span className="flex items-center gap-1">
+            <Clock size={11} /> {expiresAt}
+          </span>
+          <span className="flex items-center gap-1">
+            <Users size={11} /> {traders}
+          </span>
+          {trending && (
+            <span className="flex items-center gap-1 text-primary font-semibold">
+              <TrendingUp size={11} /> Em Alta
             </span>
-            <span className="flex items-center gap-1">
-              <Users size={12} /> {traders}
-            </span>
-            {trending && (
-              <span className="flex items-center gap-1 text-primary">
-                <Flame size={12} /> Em Alta
-              </span>
-            )}
-          </div>
+          )}
         </div>
       </div>
 
       {/* PROGRESS BAR */}
-      <div className="mt-4">
-        <div className="flex justify-between text-[10px] text-gray-500 mb-1 font-bold uppercase tracking-wider">
-           <span>Sim {Math.round(yesPrice * 100)}%</span>
-           <span>Não {Math.round(noPrice * 100)}%</span>
+      <div className="px-3 mt-2">
+        <div className="flex justify-between text-[10px] font-bold mb-1">
+          <span className="text-primary">Sim {Math.round(yesPrice * 100)}%</span>
+          <span className="text-red-500">Não {Math.round(noPrice * 100)}%</span>
         </div>
-        <div className="h-1.5 bg-[#242d40] rounded-full overflow-hidden">
+        <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-primary to-primary-dark transition-all duration-500"
+            className="h-full bg-primary transition-all duration-500"
             style={{ width: `${yesPrice * 100}%` }}
           />
         </div>
       </div>
 
-      {/* ACTION BUTTONS */}
-      <div className="flex gap-2 mt-4">
-        <button className="flex-1 bg-green-500/10 text-green-400 py-2.5 rounded-lg border border-green-500/20 hover:bg-green-500/20 transition font-bold text-xs">
-          Sim {yesPrice.toFixed(2)}x
+      {/* BUY BUTTONS */}
+      <div className="flex gap-2 px-3 mt-3">
+        <button className="flex-1 py-2 rounded-lg bg-primary/10 text-primary border border-primary/30 text-[11px] font-bold hover:bg-primary hover:text-white transition-all">
+          Comprar Sim {Math.round(yesPrice * 100)}%
+          <span className="block text-[10px] opacity-70">Paga {(1 / yesPrice).toFixed(1)}x</span>
         </button>
-        <button className="flex-1 bg-red-500/10 text-red-400 py-2.5 rounded-lg border border-red-500/20 hover:bg-red-500/20 transition font-bold text-xs">
-          Não {noPrice.toFixed(2)}x
+        <button className="flex-1 py-2 rounded-lg bg-red-50 text-red-500 border border-red-200 text-[11px] font-bold hover:bg-red-500 hover:text-white transition-all">
+          Comprar Não {Math.round(noPrice * 100)}%
+          <span className="block text-[10px] opacity-70">Paga {(1 / noPrice).toFixed(1)}x</span>
         </button>
       </div>
 
       {/* FOOTER */}
-      <div className="text-[10px] text-gray-500 mt-3 pt-3 border-t border-[#242d40] flex justify-between items-center">
-        <span className="font-spartan">Vol: <span className="text-gray-300 font-bold">${volume.toLocaleString()}</span></span>
-        <button className="text-primary font-bold hover:underline">Negociar</button>
+      <div className="px-3 py-2 mt-2 border-t border-gray-100 flex items-center justify-between">
+        <span className="text-[11px] text-gray-400">
+          Vol: <span className="text-gray-600 font-semibold">${(volume / 1000).toFixed(1)}k</span>
+        </span>
+        <button className="text-[11px] text-gray-400 font-semibold hover:text-primary transition">
+          Negociar →
+        </button>
       </div>
     </motion.div>
   );

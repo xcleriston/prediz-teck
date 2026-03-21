@@ -9,13 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#0d1421",
-        card: "#151c2c",
-        border: "#242d40",
+        background: "#f4f5f7",
+        card: "#ffffff",
+        "card-border": "#e8eaed",
         primary: {
-          DEFAULT: "#ADFF2F",
-          dark: "#7CB518",
+          DEFAULT: "#00c74d",   // SatoshiMKT green
+          dark: "#009e3d",
+          light: "#e6fff0",
         },
+        danger: {
+          DEFAULT: "#ff4d4d",
+          light: "#fff0f0",
+        },
+        brand: "#00c74d",
       },
       fontFamily: {
         nunito: ["var(--font-nunito)"],
