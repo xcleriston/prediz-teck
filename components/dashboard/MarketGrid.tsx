@@ -53,7 +53,7 @@ function BinaryMarketCard({ m }: { m: BinaryMarketProps }) {
             </span>
             <span className="flex items-center gap-1">
               <Users className="w-3 h-3" />{m.participants}
-              <Sparkles className="w-3 h-3 text-[#ADFF2F] opacity-70" title="Enhanced liquidity" />
+              <Sparkles className="w-3 h-3 text-[#ADFF2F] opacity-70" />
             </span>
           </div>
         </div>
