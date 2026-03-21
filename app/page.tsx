@@ -22,7 +22,7 @@ export default function Home() {
         <FeaturedBundles />
         
         {/* Create Market Banner */}
-        <Link href="/create" className="block rounded-2xl border border-dashed border-[#ADFF2F]/40 p-5 mb-8 transition-all hover:border-[#ADFF2F]/70 hover:shadow-lg hover:shadow-[#ADFF2F]/10 bg-[#151c2c]">
+        <Link href="/create" className="block rounded-2xl border border-dashed border-[#ADFF2F]/40 p-5 mb-8 transition-all hover:border-[#ADFF2F]/70 hover:shadow-lg hover:shadow-[#ADFF2F]/10 bg-[#0f1729]">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-[#ADFF2F]/15 flex items-center justify-center flex-shrink-0">
               <Plus className="w-5 h-5 text-[#ADFF2F]" />
@@ -41,7 +41,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-[#242d40] bg-[#0d1421] py-8 sm:py-12">
+      <footer className="border-t border-[#1f2937] bg-[#0d1421] py-8 sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-6">
             <div>
@@ -77,7 +77,7 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          <div className="border-t border-[#242d40] pt-6">
+          <div className="border-t border-[#1f2937] pt-6">
             <p className="text-xs text-gray-500 text-center">© 2026 Prediz.tech. Todos os direitos reservados.</p>
           </div>
         </div>

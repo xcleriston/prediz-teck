@@ -5,7 +5,7 @@ import { Search, Gamepad2, Globe, Plus, CircleArrowDown, User, Menu } from "luci
 
 export function DashboardHeader() {
   return (
-    <header className="sticky top-0 z-50 border-b bg-[#151c2c] border-[#242d40]" style={{ paddingTop: 'env(safe-area-inset-top, 0px)' }}>
+    <header className="sticky top-0 z-50 border-b bg-[#0f1729] border-[#1f2937]" style={{ paddingTop: 'env(safe-area-inset-top, 0px)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 sm:h-16 gap-2">
           {/* Logo & Status */}
@@ -27,7 +27,7 @@ export function DashboardHeader() {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 z-10" />
               <input 
                 type="text" 
-                className="flex rounded-md border px-3 py-2 ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm w-full pl-10 h-9 text-sm bg-[#1a2235] border-[#2a3548] focus:border-[#ADFF2F] focus:ring-[#ADFF2F] text-white" 
+                className="flex rounded-md border px-3 py-2 ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm w-full pl-10 h-9 text-sm bg-[#1f2937] border-[#2d3748] focus:border-[#ADFF2F] focus:ring-[#ADFF2F] text-white" 
                 placeholder="Buscar mercados..." 
               />
             </div>
@@ -97,14 +97,14 @@ export function DashboardHeader() {
       </div>
 
       {/* Category Navigation */}
-      <div className="border-t border-[#242d40]">
+      <div className="border-t border-[#1f2937]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex items-center gap-1 overflow-x-auto py-2 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
-            <button className="flex items-center gap-1 px-3 sm:px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all flex-shrink-0 bg-[#ADFF2F]/20 text-[#ADFF2F] border border-[#ADFF2F]/60 hover:bg-[#ADFF2F]/30">
+            <button className="flex items-center gap-1 px-3 sm:px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all flex-shrink-0 bg-[#ADFF2F]/25 text-[#ADFF2F] border border-[#ADFF2F]/50 hover:bg-[#ADFF2F]/35">
               <span className="text-sm sm:text-base">🌐</span><span className="hidden xs:inline">Todos</span>
             </button>
             {['🏛️ Política', '⚽ Esportes', '₿ Cripto', '📈 Finanças', '💹 Economia', '📱 Social', '♻️ Meio Ambiente', '💻 Tecnologia', '🎬 Entretenimento', '🎮 Jogos', '🌎 Mundo'].map((cat, i) => (
-              <button key={i} className="flex items-center gap-1 px-3 sm:px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-all flex-shrink-0 text-gray-400 hover:text-gray-200 hover:bg-[#242d40]">
+              <button key={i} className="flex items-center gap-1 px-3 sm:px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-all flex-shrink-0 text-gray-500 hover:text-gray-300 hover:bg-[#1f2937]">
                 <span className="text-sm sm:text-base">{cat.split(' ')[0]}</span>
                 <span className="hidden xs:inline">{cat.split(' ').slice(1).join(' ')}</span>
               </button>

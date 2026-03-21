@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { X, TrendingUp, Coins, Trophy } from "lucide-react";
 
 export function WelcomeBanner() {
@@ -9,11 +9,11 @@ export function WelcomeBanner() {
   if (closed) return null;
 
   return (
-    <div className="relative rounded-2xl border overflow-hidden cursor-pointer border-[#242d40] bg-[#151c2c] mb-6 hover:border-[#ADFF2F]/30 transition-all">
+    <div className="relative rounded-2xl border overflow-hidden cursor-pointer border-[#1f2937] bg-[#0f1729] mb-6 hover:border-[#ADFF2F]/40 transition-all">
       {/* Close button */}
       <button 
         onClick={() => setClosed(true)}
-        className="absolute top-3 right-3 p-2 rounded-full hover:bg-[#242d40] transition-colors z-20" 
+        className="absolute top-3 right-3 p-2 rounded-full hover:bg-[#1f2937] transition-colors z-20" 
         aria-label="Fechar"
       >
         <X className="w-5 h-5 text-gray-400 hover:text-white" />
@@ -29,7 +29,7 @@ export function WelcomeBanner() {
         {/* Info Cards Grid - 3 columns */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
           {/* Card 1 */}
-          <div className="flex flex-col items-start p-5 rounded-xl bg-[#1a2235] border border-[#242d40] hover:border-[#ADFF2F]/20 transition-all">
+          <div className="flex flex-col items-start p-5 rounded-xl bg-[#1a2335] border border-[#1f2937] hover:border-[#ADFF2F]/30 transition-all">
             <div className="w-10 h-10 rounded-full flex items-center justify-center mb-3 bg-[#ADFF2F]/20">
               <TrendingUp className="w-5 h-5 text-[#ADFF2F]" />
             </div>
@@ -38,7 +38,7 @@ export function WelcomeBanner() {
           </div>
 
           {/* Card 2 */}
-          <div className="flex flex-col items-start p-5 rounded-xl bg-[#1a2235] border border-[#242d40] hover:border-[#ADFF2F]/20 transition-all">
+          <div className="flex flex-col items-start p-5 rounded-xl bg-[#1a2335] border border-[#1f2937] hover:border-[#ADFF2F]/30 transition-all">
             <div className="w-10 h-10 rounded-full flex items-center justify-center mb-3 bg-[#ADFF2F]/20">
               <Coins className="w-5 h-5 text-[#ADFF2F]" />
             </div>
@@ -47,7 +47,7 @@ export function WelcomeBanner() {
           </div>
 
           {/* Card 3 */}
-          <div className="flex flex-col items-start p-5 rounded-xl bg-[#1a2235] border border-[#242d40] hover:border-[#ADFF2F]/20 transition-all">
+          <div className="flex flex-col items-start p-5 rounded-xl bg-[#1a2335] border border-[#1f2937] hover:border-[#ADFF2F]/30 transition-all">
             <div className="w-10 h-10 rounded-full flex items-center justify-center mb-3 bg-[#ADFF2F]/20">
               <Trophy className="w-5 h-5 text-[#ADFF2F]" />
             </div>

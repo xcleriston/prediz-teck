@@ -20,7 +20,7 @@ export function FeaturedBundles() {
           <div className="flex gap-4 pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
             {bundles.map((bundle, i) => (
               <div key={i} className="min-w-0 shrink-0 basis-full sm:basis-[48%] lg:basis-1/3">
-                <div className="relative overflow-hidden h-48 sm:h-56 md:h-64 cursor-pointer rounded-2xl border border-[#242d40] group transition-all hover:border-[#ADFF2F]/30 hover:shadow-lg hover:shadow-[#ADFF2F]/10">
+                <div className="relative overflow-hidden h-48 sm:h-56 md:h-64 cursor-pointer rounded-2xl border border-[#1f2937] group transition-all hover:border-[#ADFF2F]/40 hover:shadow-lg hover:shadow-[#ADFF2F]/10">
                   <div className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style={{ backgroundImage: `url(${bundle.img})` }}></div>
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0d1421]/95 via-[#0d1421]/60 to-transparent"></div>
                   <div className="relative z-10 h-full p-4 sm:p-5 flex flex-col justify-between">

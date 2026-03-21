@@ -140,12 +140,12 @@ export function MarketGrid() {
   return (
     <div id="markets-section" className="space-y-6 sm:space-y-8">
       <section>
-        <div className="flex items-center gap-2 mb-4 sm:mb-5">
+        <div className="flex items-center gap-2 mb-4">
           <span className="text-xl">🔥</span>
-          <h2 className="text-base sm:text-lg font-bold text-white">Destaques</h2>
+          <h2 className="text-base font-bold text-white">Destaques</h2>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-          {markets.slice(0, 7).map((market, idx) => (
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          {markets.slice(0, 8).map((market, idx) => (
             <MarketCard
               key={idx}
               title={market.title}
@@ -162,18 +162,17 @@ export function MarketGrid() {
               lmsr={market.lmsr}
             />
           ))}
-          <MultiChoiceMarketCard />
         </div>
       </section>
 
       {/* TRENDING MARKETS SECTION */}
       <section>
-        <div className="flex items-center gap-2 mb-4 sm:mb-5">
+        <div className="flex items-center gap-2 mb-4">
           <span className="text-xl">📈</span>
-          <h2 className="text-base sm:text-lg font-bold text-white">Tendência</h2>
+          <h2 className="text-base font-bold text-white">Em Tendência</h2>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-          {markets.slice(0, 4).map((market, idx) => (
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          {markets.slice(0, 8).map((market, idx) => (
             <MarketCard
               key={`trending-${idx}`}
               title={market.title}
@@ -195,12 +194,12 @@ export function MarketGrid() {
 
       {/* FEATURED MARKETS SECTION */}
       <section>
-        <div className="flex items-center gap-2 mb-4 sm:mb-5">
+        <div className="flex items-center gap-2 mb-4">
           <span className="text-xl">⭐</span>
-          <h2 className="text-base sm:text-lg font-bold text-white">Em Alta</h2>
+          <h2 className="text-base font-bold text-white">Recomendados</h2>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-          {markets.slice(2, 6).map((market, idx) => (
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          {markets.slice(0, 8).map((market, idx) => (
             <MarketCard
               key={`featured-${idx}`}
               title={market.title}

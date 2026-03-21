@@ -1,6 +1,6 @@
 "use client";
 
-import { Code, Share2, Star, Clock, Users, Sparkles } from "lucide-react";
+import { Share2, Star, Clock, Users } from "lucide-react";
 import { useState } from "react";
 
 interface BinaryMarketCardProps {
@@ -35,34 +35,34 @@ export function MarketCard({
   const [starred, setStarred] = useState(false);
 
   return (
-    <div className="group p-4 sm:p-5 rounded-2xl border bg-[#151c2c] border-[#242d40] transition-all cursor-pointer relative hover:border-[#ADFF2F]/30 hover:shadow-lg hover:shadow-[#ADFF2F]/10">
-      {/* HEADER */}
-      <div className="flex items-center justify-between mb-2 pr-0">
-        <div className="flex items-center gap-1.5 flex-wrap min-w-0">
+    <div className="group rounded-xl border bg-[#0f1729] border-[#1f2937] overflow-hidden transition-all hover:border-[#ADFF2F]/40 hover:shadow-lg hover:shadow-[#ADFF2F]/10">
+      {/* Header with badge and actions */}
+      <div className="px-3 pt-3 pb-2 flex items-center justify-between">
+        <div className="flex items-center gap-1.5 flex-wrap min-w-0 flex-1">
           {badge && (
-            <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium border ${badge.colorClass}`}>
-              <span>{badge.icon}</span>{badge.name}
+            <span className={`inline-flex items-center gap-0.5 px-2 py-0.5 rounded text-[9px] font-semibold border ${badge.colorClass}`}>
+              {badge.icon} {badge.name}
             </span>
           )}
           {!badge && category && (
-            <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium border ${category.colorClass}`}>
-              <span>{category.icon}</span>{category.name}
+            <span className={`inline-flex items-center gap-0.5 px-2 py-0.5 rounded text-[9px] font-semibold border ${category.colorClass}`}>
+              {category.icon} {category.name}
             </span>
           )}
         </div>
-        <div className="flex items-center gap-1 flex-shrink-0">
-          <button className="p-1 text-gray-500 hover:text-white transition"><Code className="w-3 h-3 sm:w-4 sm:h-4" /></button>
-          <button className="p-1 text-gray-500 hover:text-white transition"><Share2 className="w-4 h-4 sm:w-5 sm:h-5" /></button>
-          <button className="p-1 text-gray-500 hover:text-[#ADFF2F] transition" onClick={() => setStarred(!starred)}>
-            <Star className={`w-4 h-4 sm:w-5 sm:h-5 ${starred ? 'fill-[#ADFF2F] text-[#ADFF2F]' : ''}`} />
+        <div className="flex items-center gap-0.5 ml-2 flex-shrink-0">
+          <button className="p-1.5 text-gray-600 hover:text-gray-400 transition">
+            <Share2 className="w-3.5 h-3.5" />
+          </button>
+          <button className="p-1.5 text-gray-600 hover:text-[#ADFF2F] transition" onClick={() => setStarred(!starred)}>
+            <Star className={`w-3.5 h-3.5 ${starred ? 'fill-[#ADFF2F] text-[#ADFF2F]' : ''}`} />
           </button>
         </div>
       </div>
 
-      {/* CONTENT SECTION */}
-      <div className="flex gap-3 sm:gap-4 mb-3 sm:mb-4">
-        {/* IMAGE */}
-        <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-xl overflow-hidden flex-shrink-0">
+      {/* Image */}
+      <div className="px-3 pb-2">
+        <div className="w-full h-24 rounded-lg overflow-hidden bg-[#1f2937]">
           <img 
             src={image} 
             alt={title} 
@@ -72,60 +72,56 @@ export function MarketCard({
             }}
           />
         </div>
+      </div>
+
+      {/* Title */}
+      <div className="px-3 pb-2">
+        <h3 className="font-bold text-xs leading-tight line-clamp-2 text-white mb-2">{title}</h3>
         
-        {/* TITLE & META */}
-        <div className="flex-1 min-w-0">
-          <h3 className="font-bold line-clamp-2 text-sm sm:text-base transition-colors text-white">{title}</h3>
-          <div className="flex items-center gap-2 sm:gap-3 mt-1.5 sm:mt-2 text-[10px] sm:text-xs text-gray-400">
-            <span className="flex items-center gap-1">
-              <Clock className="w-3 h-3" /><span className="hidden xs:inline">{timeLeft}</span>
-            </span>
-            <span className="flex items-center gap-1">
-              <Users className="w-3 h-3" />{participants}
-              <Sparkles className="w-3 h-3 text-[#ADFF2F] opacity-70" />
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* PROGRESS BAR */}
-      <div className="mb-3 sm:mb-4">
-        <div className="flex justify-between items-center mb-1 sm:mb-1.5">
-          <span className="text-xs sm:text-sm font-semibold text-gray-300">Sim</span>
-          <span className="text-xs sm:text-sm font-bold text-[#ADFF2F]">{yesProb}%</span>
-        </div>
-        <div className="h-1.5 sm:h-2 rounded-full overflow-hidden bg-[#242d40]">
-          <div 
-            className="h-full bg-gradient-to-r from-[#ADFF2F] to-[#7CB518] rounded-full transition-all duration-500" 
-            style={{ width: `${yesProb}%` }}
-          ></div>
-        </div>
-      </div>
-
-      {/* ACTION BUTTONS */}
-      <div className="flex gap-2">
-        <button className="flex-1 py-2.5 sm:py-3 rounded-xl border text-xs sm:text-sm transition-colors flex flex-col items-center bg-[#ADFF2F]/10 border-[#ADFF2F]/50 text-[#ADFF2F] hover:bg-[#ADFF2F]/20">
-          <span className="font-semibold">Comprar Sim {yesProb}%</span>
-          <span className="text-[10px] sm:text-xs opacity-80">Paga {paysYes}</span>
-        </button>
-        <button className="flex-1 py-2.5 sm:py-3 rounded-xl border text-xs sm:text-sm transition-colors flex flex-col items-center bg-red-500/10 border-red-500/50 text-red-400 hover:bg-red-500/20">
-          <span className="font-semibold">Comprar Não {100 - yesProb}%</span>
-          <span className="text-[10px] sm:text-xs opacity-80">Paga {paysNo}</span>
-        </button>
-      </div>
-
-      {/* FOOTER */}
-      <div className="mt-2.5 sm:mt-3 pt-2.5 sm:pt-3 border-t flex items-center justify-between text-[10px] sm:text-xs border-[#242d40] text-gray-400">
-        <div className="flex items-center gap-1.5 flex-wrap">
-          <span>{volume} Vol.</span>
-          <span className={`inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full ${spi.bgClass} ${spi.textClass} text-[9px] font-medium`}>
-            <span>{spi.dot}</span><span>SPI {spi.value}</span>
+        {/* Meta info */}
+        <div className="flex items-center gap-2 text-[10px] text-gray-500">
+          <span className="flex items-center gap-0.5">
+            <Clock className="w-3 h-3" /> {timeLeft}
           </span>
-          {lmsr && (
-            <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-blue-500/15 text-blue-400 text-[9px] font-medium">LMSR {lmsr}</span>
-          )}
+          <span className="flex items-center gap-0.5">
+            <Users className="w-3 h-3" /> {participants}
+          </span>
         </div>
-        <span className="text-[#ADFF2F] font-medium cursor-pointer hover:underline">Negociar →</span>
+      </div>
+
+      {/* Progress bar */}
+      <div className="px-3 pb-2">
+        <div className="flex justify-between items-center mb-1">
+          <span className="text-[9px] font-semibold text-gray-400">Sim</span>
+          <span className="text-[9px] font-bold text-[#ADFF2F]">{yesProb}%</span>
+        </div>
+        <div className="h-1.5 rounded-full overflow-hidden bg-[#1f2937]">
+          <div 
+            className="h-full bg-[#ADFF2F] transition-all duration-500" 
+            style={{ width: `${yesProb}%` }}
+          />
+        </div>
+      </div>
+
+      {/* Buy buttons */}
+      <div className="px-3 pb-2 flex gap-1.5">
+        <button className="flex-1 px-1.5 py-1.5 rounded-lg text-[9px] font-semibold transition-colors bg-[#ADFF2F]/15 border border-[#ADFF2F]/40 text-[#ADFF2F] hover:bg-[#ADFF2F]/25">
+          SIM {yesProb}%
+        </button>
+        <button className="flex-1 px-1.5 py-1.5 rounded-lg text-[9px] font-semibold transition-colors bg-red-500/15 border border-red-500/40 text-red-400 hover:bg-red-500/25">
+          NÃO {100 - yesProb}%
+        </button>
+      </div>
+
+      {/* Footer */}
+      <div className="px-3 py-2 border-t border-[#1f2937] flex items-center justify-between text-[9px]">
+        <div className="flex items-center gap-1.5 flex-wrap">
+          <span className="text-gray-500">{volume}</span>
+          <span className={`inline-flex items-center gap-0.5 px-1 py-0.5 rounded text-[8px] font-semibold ${spi.bgClass} ${spi.textClass}`}>
+            {spi.dot} SPI {spi.value}
+          </span>
+        </div>
+        <span className="text-[#ADFF2F] font-semibold cursor-pointer hover:underline">→</span>
       </div>
     </div>
   );
