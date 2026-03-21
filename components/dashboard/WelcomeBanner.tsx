@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { X, TrendingUp, Coins, Trophy } from "lucide-react";
 
