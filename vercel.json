@@ -5,11 +5,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://buy.moonpay.com https://verify.didit.me; frame-src 'self' https://buy.moonpay.com https://verify.didit.me; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://*.walletconnect.com;"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
+          "value": "default-src 'self'; img-src 'self' data: https: blob:; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://buy.moonpay.com https://verify.didit.me; frame-src 'self' https://buy.moonpay.com https://verify.didit.me; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://*.walletconnect.com https://*.infura.io wss://*.walletconnect.com;"
         },
         {
           "key": "X-Content-Type-Options",
