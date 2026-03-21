@@ -3,53 +3,45 @@
 @tailwind utilities;
 
 :root {
-  --background: #0A0F1A;
-  --foreground: #F8FAFC;
+    --background: #0A0F1A;
+    --foreground: #F8FAFC;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: var(--font-nunito), sans-serif;
-  overflow-x: hidden;
+    color: var(--foreground);
+    background: var(--background);
+    font-family: var(--font-nunito), sans-serif;
+    overflow-x: hidden;
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-  
+    .text-balance {
+          text-wrap: balance;
+    }
+
   .glass-panel {
-    @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)];
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   }
-  
+
   .glass-panel-dark {
-    @apply bg-[#0f172a]/80 backdrop-blur-xl border border-white/5;
+        background: rgba(15, 23, 42, 0.8);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
   }
-  
+
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#8B00FF] to-[#A020F0];
+        background: linear-gradient(to right, #8B00FF, #A020F0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
   }
-  
+
   .bg-gradient-primary {
-    @apply bg-gradient-to-r from-[#8B00FF] to-[#A020F0];
+        background: linear-gradient(to right, #8B00FF, #A020F0);
   }
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: #0A0F1A;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #A020F0;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #8B00FF;
 }
